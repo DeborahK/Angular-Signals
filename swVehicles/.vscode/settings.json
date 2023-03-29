@@ -1,0 +1,7 @@
+{
+  "files.autoSave": "afterDelay",
+  "html.format.wrapAttributes": "force-aligned",
+  // "editor.quickSuggestionsDelay": 1000,
+  //"editor.hover.enabled": false,
+  // "editor.parameterHints": false,
+}

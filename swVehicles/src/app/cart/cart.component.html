@@ -1,0 +1,88 @@
+<div class="card border-secondary">
+  <div class="card-header text-secondary fw-bold">
+    <div class="row">
+      <div class="col-md-12">{{ pageTitle }}</div>
+    </div>
+  </div>
+
+  <div class="card-body">
+
+    <!-- Display the cart items -->
+    <!-- The cart items and totals could be separate components -->
+    <div class="row"
+         *ngIf="cartItems().length; else noItems">
+      <table class="table-responsive table-striped table-sm">
+        <th>Vehicle</th>
+        <th class="text-center"
+            class="text-center">Price</th>
+        <th class="text-center">Quantity</th>
+        <tr *ngFor="let item of cartItems()">
+          <td>{{ item.vehicle.name }}</td>
+          <td class="text-center">
+            {{ item.vehicle.cost_in_credits | number: '1.2-2' }}
+          </td>
+          <td>
+            <select class="form-select"
+                    aria-label="Quantity list"
+                    style="margin-bottom: 10px; width:50px; margin: 0 auto"
+                    [ngModel]="item.quantity"
+                    (change)="onQuantitySelected(item, $any($event.target).value)">
+              <option disabled
+                      value="">--Select a quantity--</option>
+              <option *ngFor="let q of qtyAvailable()">{{ q }}</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-warning"
+                    (click)="removeFromCart(item)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Display totals -->
+  <div class="card-footer"
+       *ngIf="cartItems().length">
+    <div class="row">
+      <div class="col-md-3">Subtotal:</div>
+      <div class="col-md-3"
+           style="text-align:right">
+        {{ subTotal() | number: '1.2-2' }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">Delivery:</div>
+      <div class="col-md-3"
+           style="text-align:right"
+           *ngIf="deliveryFee()">
+        {{ deliveryFee() | number: '1.2-2' }}
+      </div>
+      <div class="col-md-3"
+           style="text-align:right;color:red"
+           *ngIf="!deliveryFee()">
+        Free
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">Estimated Tax:</div>
+      <div class="col-md-3"
+           style="text-align:right">
+        {{ tax() | number: '1.2-2' }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3"><b>Total:</b></div>
+      <div class="col-md-3"
+           style="text-align:right">
+        <b>{{ totalPrice() | number: '1.2-2' }}</b>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noItems>No items in cart</ng-template>
+</div>
