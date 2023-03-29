@@ -1,2 +1,2 @@
 # swVehicles
-Sample application depicting reactive programming in a CRUD application.
+Sample application depicting reactive programming using Angular signals.
