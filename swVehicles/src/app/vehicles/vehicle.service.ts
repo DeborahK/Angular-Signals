@@ -2,7 +2,7 @@ import {
   HttpClient,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { effect, inject, Injectable, Signal, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
@@ -12,6 +12,7 @@ import {
   switchMap,
   throwError,
 } from 'rxjs';
+import { fromObservable } from '@angular/core/rxjs-interop';
 import { Vehicle, VehicleResponse } from './vehicle';
 
 @Injectable({
@@ -20,6 +21,7 @@ import { Vehicle, VehicleResponse } from './vehicle';
 export class VehicleService {
   private url = 'https://swapi.py4e.com/api/vehicles';
 
+  // Inject any dependencies
   http = inject(HttpClient);
 
   // First page of vehicles
@@ -30,7 +32,8 @@ export class VehicleService {
   );
 
   // Expose the Observable as a signal
-  vehicles = fromObservable(this.vehicles$);
+  // Provide a default value in case the Observable hasn't emitted yet
+  vehicles = fromObservable(this.vehicles$, []);
   errorMessage = signal('');
 
   // Could use a BehaviorSubject or Signal
@@ -65,7 +68,7 @@ export class VehicleService {
         : of(null)
     )
   );
-  selectedVehicle = fromObservable(this.selectedVehicle$);
+  selectedVehicle = fromObservable(this.selectedVehicle$, null);
 
   vehicleSelected(vehicleName: string) {
     this.vehicleSelectedSubject.next(vehicleName);
@@ -90,23 +93,4 @@ export class VehicleService {
     this.errorMessage.set(errorMessage);
     return throwError(() => errorMessage);
   }
-}
-
-// This is only required because these methods are not currently available
-/** crude implementation, for sample use only */
-export function fromSignal<T>(s: Signal<T>): Observable<T> {
-  return new Observable((subscriber) => {
-    const ref = effect(() => {
-      subscriber.next(s());
-    });
-    /** clean up the effect once the observable is done. */
-    return () => ref.destroy();
-  });
-}
-
-/** even worse implementation.  */
-export function fromObservable<T>(o: Observable<T>): Signal<T> {
-  const result = signal(undefined as unknown as T); // not the proper way 😇
-  o.subscribe((val) => result.set(val)); // will live forever!
-  return result;
 }

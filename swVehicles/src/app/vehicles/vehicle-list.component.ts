@@ -24,8 +24,9 @@ export class VehicleListComponent {
   }
 
   constructor() {
-    // This is `undefined` because the data is not yet retrieved.
-    console.log(this.vehicles());
+    // This is an empty array because the data is not yet retrieved
+    // And the default signal value is an empty array
+    console.log("Vehicles:", this.vehicles());
   }
 
 }

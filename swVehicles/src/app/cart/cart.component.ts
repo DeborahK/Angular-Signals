@@ -28,7 +28,7 @@ export class CartComponent {
   totalPrice = this.cartService.totalPrice;
 
   // Example of an effect
-  x = effect(() => console.log(this.cartItems()));
+  x = effect(() => console.log("Cart items:", this.cartItems()));
 
   onQuantitySelected(item: CartItem, qty: number) {
     this.cartService.updateInCart(item, qty);
