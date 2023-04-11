@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class='card-body'
+       *ngIf="vehicles$ | async as vehicles">
+
+    <div class="list-group">
+      <button type="button"
+              class="list-group-item"
+              *ngFor="let vehicle of vehicles"
+              [ngClass]="{'active': vehicle?.name === (selectedVehicle$ | async)?.name}"
+              (click)="onSelected(vehicle.name)">
+        {{ vehicle.name }}
+      </button>
+    </div>
+  </div>
+
+  <div class="alert alert-danger"
+       *ngIf="errorMessage">
+    {{errorMessage }}
+  </div>
+</div>

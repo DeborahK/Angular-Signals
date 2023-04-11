@@ -1,0 +1,50 @@
+<div class="card"
+     *ngIf="vehicle$ | async as vehicle">
+  <div class="card-header">
+    {{pageTitle$ | async}}
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-3">Name:</div>
+      <div class="col-md-6">{{vehicle.name}}</div>
+      <div class="col-md-3">
+        <button class='btn btn-primary'
+                (click)="addToCart(vehicle)">Add to Cart
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">Classification:</div>
+      <div class="col-md-6">{{vehicle.vehicle_class}}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">Price (in credits):</div>
+      <div class="col-md-6">{{vehicle.cost_in_credits | number:'1.2-2'}}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">Crew:</div>
+      <div class="col-md-6">{{vehicle.crew}}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">Passengers:</div>
+      <div class="col-md-6">{{vehicle.passengers}}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">Cargo Capacity:</div>
+      <div class="col-md-6">{{vehicle.cargo_capacity}}</div>
+    </div>
+
+    <div class="row"
+         *ngIf="vehicleFilms$ | async as films">
+      <div class="col-md-3">Films:</div>
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li class="list-group-item"
+              *ngFor="let film of films">{{film.title}}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
