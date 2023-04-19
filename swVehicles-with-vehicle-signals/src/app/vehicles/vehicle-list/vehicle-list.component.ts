@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { NgFor, NgClass, NgIf, AsyncPipe } from '@angular/common';
 import { VehicleService } from '../vehicle.service';
 
@@ -13,7 +13,14 @@ export class VehicleListComponent {
   errorMessage = '';
 
   // Component signals
-  vehicles = this.vehicleService.vehicles;
+  vehicles = computed(() => {
+    try {
+      return this.vehicleService.vehicles();
+    } catch (e) {
+      this.errorMessage = typeof e === 'string'? e : 'Error';
+      return [];
+    }
+  });
   selectedVehicle = this.vehicleService.selectedVehicle;
 
   constructor(private vehicleService: VehicleService) { }

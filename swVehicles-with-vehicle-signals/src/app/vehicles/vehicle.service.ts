@@ -10,7 +10,7 @@ import {
   switchMap,
   throwError
 } from 'rxjs';
-import { fromObservable, fromSignal } from '@angular/core/rxjs-interop';
+import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { Film, Vehicle, VehicleResponse } from './vehicle';
 
 @Injectable({
@@ -36,17 +36,17 @@ export class VehicleService {
   );
 
   // Expose signals from this service
-  vehicles = fromObservable<Vehicle[], Vehicle[]>(this.vehicles$, []);
+  vehicles = toSignal<Vehicle[], Vehicle[]>(this.vehicles$, {initialValue: []});
   selectedVehicle = signal<Vehicle | undefined>(undefined);
   
-  private vehicleFilms$ = fromSignal(this.selectedVehicle).pipe(
+  private vehicleFilms$ = toObservable(this.selectedVehicle).pipe(
     filter(Boolean),
     switchMap(vehicle =>
       forkJoin(vehicle.films.map(link =>
         this.http.get<Film>(link)))
     )
   );
-  vehicleFilms = fromObservable<Film[], Film[]>(this.vehicleFilms$, []);
+  vehicleFilms = toSignal<Film[], Film[]>(this.vehicleFilms$, {initialValue: []});
 
   constructor(private http: HttpClient) {
   }
