@@ -12,7 +12,7 @@ import {
   switchMap,
   throwError,
 } from 'rxjs';
-import { fromObservable } from '@angular/core/rxjs-interop';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Vehicle, VehicleResponse } from './vehicle';
 
 @Injectable({
@@ -33,7 +33,7 @@ export class VehicleService {
 
   // Expose the Observable as a signal
   // Provide a default value in case the Observable hasn't emitted yet
-  vehicles = fromObservable(this.vehicles$, []);
+  vehicles = toSignal(this.vehicles$, { initialValue: []});
   errorMessage = signal('');
 
   // Could use a BehaviorSubject or Signal
@@ -45,7 +45,7 @@ export class VehicleService {
   private vehicleSelectedSubject = new BehaviorSubject<string>('');
 
   // Optionally don't expose this publically.
-  selectedVehicle$ = this.vehicleSelectedSubject.pipe(
+  private selectedVehicle$ = this.vehicleSelectedSubject.pipe(
     switchMap((vehicleName) =>
       vehicleName.length
         ? this.http
@@ -68,7 +68,7 @@ export class VehicleService {
         : of(null)
     )
   );
-  selectedVehicle = fromObservable(this.selectedVehicle$, null);
+  selectedVehicle = toSignal(this.selectedVehicle$);
 
   vehicleSelected(vehicleName: string) {
     this.vehicleSelectedSubject.next(vehicleName);
