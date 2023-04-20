@@ -5,4 +5,4 @@ Experimentation with Angular's signals features.
 
 - swVehicles-with-vehicle-signals: RxJS/Observables + Signals (vehicle features)
 
-- swVehicles: Simpler version of app
+- swVehicles-simple: Simpler version of app
