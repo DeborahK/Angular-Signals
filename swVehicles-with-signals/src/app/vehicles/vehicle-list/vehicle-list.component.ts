@@ -1,11 +1,11 @@
 import { Component, computed } from '@angular/core';
-import { NgFor, NgClass, NgIf, AsyncPipe } from '@angular/common';
+import { NgFor, NgClass, NgIf } from '@angular/common';
 import { VehicleService } from '../vehicle.service';
 
 @Component({
   selector: 'sw-vehicle-list',
   standalone: true,
-  imports: [AsyncPipe, NgClass, NgFor, NgIf],
+  imports: [NgClass, NgFor, NgIf],
   templateUrl: './vehicle-list.component.html'
 })
 export class VehicleListComponent {

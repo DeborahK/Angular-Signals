@@ -17,8 +17,9 @@
          [routerLink]="['/cart']"
          routerLinkActive="active"
          [routerLinkActiveOptions]="{ exact : true}">Cart
-         <span class="badge bg-primary">{{cartCount$ | async}}</span>
-        </a>
+        <span class="badge bg-primary"
+              *ngIf="cartCount()">{{cartCount()}}</span>
+      </a>
     </li>
   </ul>
 </nav>

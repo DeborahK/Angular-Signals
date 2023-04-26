@@ -1,5 +1,5 @@
 import { Component, computed } from '@angular/core';
-import { AsyncPipe, DecimalPipe, NgFor, NgIf } from '@angular/common';
+import { DecimalPipe, NgFor, NgIf } from '@angular/common';
 import { CartService } from 'src/app/cart/cart.service';
 import { Vehicle } from '../vehicle';
 import { VehicleService } from '../vehicle.service';
@@ -7,7 +7,7 @@ import { VehicleService } from '../vehicle.service';
 @Component({
   selector: 'sw-vehicle-detail',
   standalone: true,
-  imports: [AsyncPipe, NgFor, NgIf, DecimalPipe],
+  imports: [NgFor, NgIf, DecimalPipe],
   templateUrl: './vehicle-detail.component.html'
 })
 export class VehicleDetailComponent {
