@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { DecimalPipe, NgFor, NgIf } from '@angular/common';
 
 import { CartService } from './cart.service';
@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [DecimalPipe, NgIf, NgFor, FormsModule],
   templateUrl: './cart.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent {
   pageTitle = 'Cart';
@@ -20,7 +21,7 @@ export class CartComponent {
 
   cartService = inject(CartService);
 
-  // Expose the values from the service
+  // Expose the signals from the service
   cartItems = this.cartService.cartItems;
   subTotal = this.cartService.subTotal;
   deliveryFee = this.cartService.deliveryFee;

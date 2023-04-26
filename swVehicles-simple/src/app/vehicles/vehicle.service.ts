@@ -2,10 +2,11 @@ import {
   HttpClient,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { effect, inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
+  filter,
   map,
   Observable,
   of,
@@ -25,7 +26,6 @@ export class VehicleService {
   http = inject(HttpClient);
 
   // First page of vehicles
-  // Optionally, don't expose this publically.
   private vehicles$ = this.http.get<VehicleResponse>(this.url).pipe(
     map((data) => data.results),
     catchError(this.handleError)
@@ -33,8 +33,7 @@ export class VehicleService {
 
   // Expose the Observable as a signal
   // Provide a default value in case the Observable hasn't emitted yet
-  vehicles = toSignal(this.vehicles$, { initialValue: []});
-  errorMessage = signal('');
+  vehicles = toSignal<Vehicle[], Vehicle[]>(this.vehicles$, { initialValue: [] });
 
   // Could use a BehaviorSubject or Signal
   // Using a BehaviorSubject requires less context switching:
@@ -46,25 +45,26 @@ export class VehicleService {
 
   // Optionally don't expose this publically.
   private selectedVehicle$ = this.vehicleSelectedSubject.pipe(
+    filter(Boolean),
     switchMap((vehicleName) =>
       vehicleName.length
         ? this.http
-            .get<VehicleResponse>(`${this.url}?search=${vehicleName}`)
-            .pipe(
-              map((data) => data.results[0]),
-              // Fill in a random price for any missing the price
-              // (We can't modify the backend in this demo)
-              map(
-                (v) =>
-                  ({
-                    ...v,
-                    cost_in_credits: isNaN(Number(v.cost_in_credits))
-                      ? String(Math.random() * 100000)
-                      : v.cost_in_credits,
-                  } as Vehicle)
-              ),
-              catchError(this.handleError)
-            )
+          .get<VehicleResponse>(`${this.url}?search=${vehicleName}`)
+          .pipe(
+            map((data) => data.results[0]),
+            // Fill in a random price for any missing the price
+            // (We can't modify the backend in this demo)
+            map(
+              (v) =>
+              ({
+                ...v,
+                cost_in_credits: isNaN(Number(v.cost_in_credits))
+                  ? String(Math.random() * 100000)
+                  : v.cost_in_credits,
+              } as Vehicle)
+            ),
+            catchError(this.handleError)
+          )
         : of(null)
     )
   );
@@ -87,10 +87,6 @@ export class VehicleService {
       errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
     }
     console.error(errorMessage);
-    // Set the error signal.
-    // NOTE: This assumes this service will only generate one error at a time,
-    // overwriting any existing error messages
-    this.errorMessage.set(errorMessage);
     return throwError(() => errorMessage);
   }
 }

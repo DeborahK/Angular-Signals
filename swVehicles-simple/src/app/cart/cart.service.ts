@@ -11,9 +11,7 @@ export class CartService {
   // Total up the extended price for each item
   subTotal = computed(() =>
     this.cartItems().reduce(
-      (a, b) => a + b.quantity * Number(b.vehicle.cost_in_credits),
-      0
-    )
+      (a, b) => a + b.quantity * Number(b.vehicle.cost_in_credits), 0)
   );
 
   // Delivery is free if spending more than 100,000 credits

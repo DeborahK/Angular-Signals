@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { NgFor, NgClass, NgIf } from '@angular/common';
 import {  VehicleService } from './vehicle.service';
 
@@ -7,16 +7,25 @@ import {  VehicleService } from './vehicle.service';
   standalone: true,
   imports: [NgClass, NgFor, NgIf],
   templateUrl: './vehicle-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VehicleListComponent {
   pageTitle = 'Vehicles';
-
+  errorMessage = signal('');
+  
   vehicleService = inject(VehicleService);
 
-  vehicles = this.vehicleService.vehicles;
+  // Component signals
+  vehicles = computed(() => {
+    try {
+      return this.vehicleService.vehicles();
+    } catch (e) {
+      this.errorMessage.set(typeof e === 'string'? e : 'Error');
+      console.log(this.errorMessage());
+      return [];
+    }
+  });
   selectedVehicle = this.vehicleService.selectedVehicle;
-  // Better error handling?
-  errorMessage = this.vehicleService.errorMessage;
 
   // When a vehicle is selected, emit the selected vehicle name
   onSelected(vehicleName: string): void {
