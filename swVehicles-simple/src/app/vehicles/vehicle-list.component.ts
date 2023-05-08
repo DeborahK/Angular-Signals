@@ -11,8 +11,9 @@ import {  VehicleService } from './vehicle.service';
 })
 export class VehicleListComponent {
   pageTitle = 'Vehicles';
-  errorMessage = signal('');
-  
+  // errorMessage = signal('');
+  errorMessage = '';
+
   vehicleService = inject(VehicleService);
 
   // Component signals
@@ -20,8 +21,9 @@ export class VehicleListComponent {
     try {
       return this.vehicleService.vehicles();
     } catch (e) {
-      this.errorMessage.set(typeof e === 'string'? e : 'Error');
-      console.log(this.errorMessage());
+      this.errorMessage = typeof e === 'string'? e : 'Error';
+      // this.errorMessage.set(typeof e === 'string'? e : 'Error');
+      // console.log(this.errorMessage());
       return [];
     }
   });

@@ -2,7 +2,7 @@ import {
   HttpClient,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
