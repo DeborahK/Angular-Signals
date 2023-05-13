@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { catchError, of, switchMap } from 'rxjs';
+import { catchError, of, switchMap, tap } from 'rxjs';
 import { ToDo } from './todo';
 import { UserService } from '../users/user.service';
 
@@ -18,7 +18,9 @@ export class TodoService {
   // When the selectedUserName changes, get the user's tasks
   userTasks = signal<ToDo[]>([]);
   userTasks$ = toObservable(this.userService.selectedUserId).pipe(
-    switchMap(userId => this.http.get<ToDo[]>(this.todoUrl + userId)),
+    switchMap(userId => this.http.get<ToDo[]>(this.todoUrl + userId).pipe(
+      tap(tasks => this.userTasks.set(tasks))
+    )),
     catchError(() => of([] as ToDo[])) //  on any error, just return an empty array
   );
   readOnlyUserTasks = toSignal(this.userTasks$, { initialValue: [] as ToDo[] });
