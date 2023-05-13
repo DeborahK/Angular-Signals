@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { catchError, of, switchMap } from 'rxjs';
@@ -13,16 +13,24 @@ export class TodoService {
   // Inject the HttpClient service
   http = inject(HttpClient);
   userService = inject(UserService);
-  todoUrl = 'https://jsonplaceholder.typicode.com/todos';
+  todoUrl = 'https://jsonplaceholder.typicode.com/todos?userId=';
 
   // When the selectedUserName changes, get the user's tasks
   selectedUserTasks$ = toObservable(this.userService.selectedUserId).pipe(
-    switchMap(userId => this.http.get<ToDo[]>(`${this.todoUrl}?userId=${userId}`)),
+    switchMap(userId => this.http.get<ToDo[]>(this.todoUrl + userId)),
     catchError(() => of([] as ToDo[])) //  on any error, just return an empty array
   );
   selectedUserTasks = toSignal(this.selectedUserTasks$, { initialValue: [] as ToDo[] });
 
+  // Mark the task completed
   markComplete(task: ToDo) {
+    // This doesn't provide the notification
     task.completed = true;
+
+    // This updates a copy, doesn't provide the notification
+    const newTasks = signal<ToDo[]>([]);
+    newTasks.update(tasks => tasks.map(t =>
+      t.id === task.id ? { ...t, completed: true } : t)
+    );
   }
 }

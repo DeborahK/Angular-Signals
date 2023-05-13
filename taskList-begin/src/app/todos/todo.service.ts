@@ -13,7 +13,7 @@ export class TodoService {
   // Inject the HttpClient service
   http = inject(HttpClient);
   userService = inject(UserService);
-  todoUrl = 'https://jsonplaceholder.typicode.com/todos';
+  todoUrl = 'https://jsonplaceholder.typicode.com/todos?userId=';
 
   // When the selectedUserName changes, get the user's tasks
 

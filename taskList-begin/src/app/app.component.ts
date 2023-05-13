@@ -9,5 +9,5 @@ import { UserShellComponent } from './users/user-shell/user-shell.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Acme TimeSheet Entry';
+  title = 'User Tasks';
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoService } from 'src/app/todos/todo.service';
 import { ToDo } from '../todo';
@@ -15,10 +15,12 @@ export class UserTodosComponent {
   todoService = inject(TodoService);
 
   // Variables that don't change value
-  pageTitle = 'User Tasks';
+  // pageTitle = 'User Tasks';
 
   // Expose the state as signals
   userTasks = this.todoService.selectedUserTasks;
+  completedCount = computed(() => this.userTasks().filter(task => task.completed).length);
+  pageTitle = computed(() => `User Tasks - ${this.completedCount()} completed`);
 
   // Mark as completed
   markComplete(task: ToDo) {

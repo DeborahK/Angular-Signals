@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserListComponent {
-  // Inject the UserService
+  // Inject the UserService (new in v14)
   userService = inject(UserService);
 
   // Variables that don't change value

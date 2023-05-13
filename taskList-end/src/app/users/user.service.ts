@@ -23,6 +23,7 @@ export class UserService {
   users = toSignal(this.users$, {initialValue: [] as User[]});
   selectedUserId = signal(0);
 
+  // Set the selected user
   setSelectedUser(id: number) {
     this.selectedUserId.set(id);
   }
