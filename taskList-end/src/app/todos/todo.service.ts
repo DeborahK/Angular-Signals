@@ -16,20 +16,16 @@ export class TodoService {
   todoUrl = 'https://jsonplaceholder.typicode.com/todos?userId=';
 
   // When the selectedUserName changes, get the user's tasks
-  selectedUserTasks$ = toObservable(this.userService.selectedUserId).pipe(
+  userTasks = signal<ToDo[]>([]);
+  userTasks$ = toObservable(this.userService.selectedUserId).pipe(
     switchMap(userId => this.http.get<ToDo[]>(this.todoUrl + userId)),
     catchError(() => of([] as ToDo[])) //  on any error, just return an empty array
   );
-  selectedUserTasks = toSignal(this.selectedUserTasks$, { initialValue: [] as ToDo[] });
+  readOnlyUserTasks = toSignal(this.userTasks$, { initialValue: [] as ToDo[] });
 
   // Mark the task completed
   markComplete(task: ToDo) {
-    // This doesn't provide the notification
-    task.completed = true;
-
-    // This updates a copy, doesn't provide the notification
-    const newTasks = signal<ToDo[]>([]);
-    newTasks.update(tasks => tasks.map(t =>
+    this.userTasks.update(tasks => tasks.map(t =>
       t.id === task.id ? { ...t, completed: true } : t)
     );
   }

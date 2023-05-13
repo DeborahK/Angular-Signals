@@ -18,7 +18,7 @@ export class UserTodosComponent {
   // pageTitle = 'User Tasks';
 
   // Expose the state as signals
-  userTasks = this.todoService.selectedUserTasks;
+  userTasks = this.todoService.userTasks;
   completedCount = computed(() => this.userTasks().filter(task => task.completed).length);
   pageTitle = computed(() => `User Tasks - ${this.completedCount()} completed`);
 
