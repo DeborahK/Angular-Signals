@@ -15,7 +15,7 @@ export class TodoService {
   userService = inject(UserService);
   todoUrl = 'https://jsonplaceholder.typicode.com/todos?userId=';
 
-  // When the selectedUserName changes, get the user's tasks
+  // When the selected user changes, get the user's tasks
 
   // Mark the task completed
 
