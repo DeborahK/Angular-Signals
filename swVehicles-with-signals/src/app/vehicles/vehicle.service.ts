@@ -36,7 +36,7 @@ export class VehicleService {
   );
 
   // Expose signals from this service
-  vehicles = toSignal<Vehicle[], Vehicle[]>(this.vehicles$, {initialValue: []});
+  vehicles = toSignal(this.vehicles$, {initialValue: [] as Vehicle[]});
   selectedVehicle = signal<Vehicle | undefined>(undefined);
   
   private vehicleFilms$ = toObservable(this.selectedVehicle).pipe(
