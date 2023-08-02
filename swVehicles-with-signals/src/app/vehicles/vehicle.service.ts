@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import {
   catchError,
   filter,
@@ -18,6 +18,7 @@ import { Film, Vehicle, VehicleResponse } from './vehicle';
 })
 export class VehicleService {
   private url = 'https://swapi.py4e.com/api/vehicles';
+  http = inject(HttpClient);
 
   // First page of vehicles
   // If the price is empty, randomly assign a price
@@ -47,9 +48,6 @@ export class VehicleService {
     )
   );
   vehicleFilms = toSignal<Film[], Film[]>(this.vehicleFilms$, {initialValue: []});
-
-  constructor(private http: HttpClient) {
-  }
 
   vehicleSelected(vehicleName: string) {
     const foundVehicle = this.vehicles().find((v) => v.name === vehicleName);

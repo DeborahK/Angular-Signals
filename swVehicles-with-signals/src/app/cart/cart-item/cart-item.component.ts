@@ -1,4 +1,4 @@
-import { Component, Input, computed, signal } from '@angular/core';
+import { Component, Input, computed, inject, signal } from '@angular/core';
 import { DecimalPipe, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,6 +12,8 @@ import { CartService } from '../cart.service';
   templateUrl: './cart-item.component.html'
 })
 export class CartItemComponent {
+  cartService = inject(CartService);
+
   // Use a setter to emit whenever a new item is set
   _item!: CartItem;
   get item(): CartItem {
@@ -32,8 +34,6 @@ export class CartItemComponent {
   // When the item changes, recalculate the extended price
   exPrice = computed(() =>
     this.cartItem().quantity * Number(this.cartItem().vehicle.cost_in_credits));
-
-  constructor(private cartService: CartService) { }
 
   onQuantitySelected(quantity: number): void {
     // Update the quantity in the item

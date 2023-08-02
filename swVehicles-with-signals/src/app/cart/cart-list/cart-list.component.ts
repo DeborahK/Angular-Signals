@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
 
 import { CartService } from '../cart.service';
@@ -15,7 +15,7 @@ import { CartItemComponent } from "../cart-item/cart-item.component";
   imports: [NgFor, CartItemComponent]
 })
 export class CartListComponent {
-  cartItems = this.cartService.cartItems;
+  cartService = inject(CartService);
 
-  constructor(private cartService: CartService) { }
+  cartItems = this.cartService.cartItems;
 }

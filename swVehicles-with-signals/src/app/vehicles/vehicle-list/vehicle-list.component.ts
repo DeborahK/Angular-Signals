@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { NgFor, NgClass, NgIf } from '@angular/common';
 import { VehicleService } from '../vehicle.service';
 
@@ -11,6 +11,7 @@ import { VehicleService } from '../vehicle.service';
 export class VehicleListComponent {
   pageTitle = 'Vehicles';
   errorMessage = '';
+  vehicleService = inject(VehicleService);
 
   // Component signals
   vehicles = computed(() => {
@@ -22,8 +23,6 @@ export class VehicleListComponent {
     }
   });
   selectedVehicle = this.vehicleService.selectedVehicle;
-
-  constructor(private vehicleService: VehicleService) { }
 
   // When a vehicle is selected, emit the selected vehicle name
   onSelected(vehicleName: string): void {

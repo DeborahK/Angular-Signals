@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DecimalPipe, NgIf } from '@angular/common';
 
 import { CartService } from '../cart.service';
@@ -10,6 +10,7 @@ import { CartService } from '../cart.service';
   templateUrl: './cart-total.component.html'
 })
 export class CartTotalComponent {
+  cartService = inject(CartService);
 
   cartItems = this.cartService.cartItems;
 
@@ -21,5 +22,4 @@ export class CartTotalComponent {
 
   totalPrice = this.cartService.totalPrice;
   
-  constructor(private cartService: CartService) { }
 }
