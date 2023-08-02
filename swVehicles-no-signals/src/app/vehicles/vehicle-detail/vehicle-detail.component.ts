@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AsyncPipe, DecimalPipe, NgFor, NgIf } from '@angular/common';
 import { catchError, EMPTY, map, tap } from 'rxjs';
 import { CartService } from 'src/app/cart/cart.service';
@@ -13,8 +13,10 @@ import { VehicleService } from '../vehicle.service';
 })
 export class VehicleDetailComponent {
   errorMessage = '';
+  cartService = inject(CartService);
+  vehicleService = inject(VehicleService);
 
-  vehicle$ = this.vehicleService.selectedVehicle$.pipe(
+    vehicle$ = this.vehicleService.selectedVehicle$.pipe(
     catchError(err => {
       this.errorMessage = err;
       return EMPTY;
@@ -31,9 +33,6 @@ export class VehicleDetailComponent {
       return EMPTY;
     })
   );
-
-  constructor(private vehicleService: VehicleService,
-    private cartService: CartService) { }
 
   addToCart(vehicle: Vehicle) {
     this.cartService.addToCart(vehicle);

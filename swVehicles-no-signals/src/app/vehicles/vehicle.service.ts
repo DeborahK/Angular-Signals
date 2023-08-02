@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
@@ -20,7 +20,8 @@ import { Film, Vehicle, VehicleResponse } from './vehicle';
 })
 export class VehicleService {
   private url = 'https://swapi.py4e.com/api/vehicles';
-
+  http = inject(HttpClient);
+  
   // Action stream
   private vehicleSelectedSubject = new BehaviorSubject<string>('');
   vehicleSelected$ = this.vehicleSelectedSubject.asObservable();
@@ -55,9 +56,6 @@ export class VehicleService {
         this.http.get<Film>(link)))
     )
   );
-
-  constructor(private http: HttpClient) {
-  }
 
   vehicleSelected(vehicleName: string) {
     this.vehicleSelectedSubject.next(vehicleName);

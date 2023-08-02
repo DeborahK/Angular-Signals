@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgFor, NgClass, NgIf, AsyncPipe } from '@angular/common';
 import { EMPTY, catchError } from 'rxjs';
 import { VehicleService } from '../vehicle.service';
@@ -12,7 +12,8 @@ import { VehicleService } from '../vehicle.service';
 export class VehicleListComponent {
   pageTitle = 'Vehicles';
   errorMessage = '';
-
+  vehicleService = inject(VehicleService);
+ 
   // Vehicles
   vehicles$ = this.vehicleService.vehicles$
     .pipe(
@@ -27,8 +28,6 @@ export class VehicleListComponent {
       return EMPTY;
     })
   );
-
-  constructor(private vehicleService: VehicleService) { }
 
   // When a vehicle is selected, emit the selected vehicle name
   onSelected(vehicleName: string): void {
