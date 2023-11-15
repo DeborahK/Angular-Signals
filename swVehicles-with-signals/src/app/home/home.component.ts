@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sw-welcome',
   standalone: true,
-  imports: [],
-  templateUrl: './welcome.component.html'
+  templateUrl: './home.component.html'
 })
-export class WelcomeComponent {
+export class HomeComponent {
   public pageTitle = 'Welcome to Star Wars Vehicle Sales';
 
 }

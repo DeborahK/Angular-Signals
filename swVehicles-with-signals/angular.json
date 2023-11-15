@@ -11,11 +11,11 @@
       "prefix": "swv",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/sw-vehicles",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -46,12 +46,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -60,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "swVehicles:build:production"
+              "buildTarget": "swVehicles:build:production"
             },
             "development": {
-              "browserTarget": "swVehicles:build:development"
+              "buildTarget": "swVehicles:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "swVehicles:build"
+            "buildTarget": "swVehicles:build"
           }
         },
         "test": {
@@ -96,6 +93,6 @@
     }
   },
   "cli": {
-    "analytics": "3068aa38-1af3-41e3-b79c-a4984b7e52bf"
+    "analytics": "8bfb79be-1022-484c-bc5c-17141f983b33"
   }
 }

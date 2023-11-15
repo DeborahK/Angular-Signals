@@ -1,8 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { DecimalPipe, NgFor, NgIf } from '@angular/common';
-import { CartService } from 'src/app/cart/cart.service';
 import { Vehicle } from '../vehicle';
 import { VehicleService } from '../vehicle.service';
+import { CartService } from '../../cart/cart.service';
 
 @Component({
   selector: 'sw-vehicle-detail',

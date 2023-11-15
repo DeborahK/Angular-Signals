@@ -1,47 +1,36 @@
-<div class="card border-primary"
-     *ngIf='cartItem()'>
+<div *ngIf='cartItem()'>
 
-  <div class='card-header text-primary'>
-    <div class="row">
-      <div class="col-md-4">Name:</div>
-      <div class="col-md-6  fw-bold">{{cartItem().vehicle.name}}</div>
-      <div class="col-md-2">
-        <button type="button"
-                class="btn-close"
-                aria-label="Close"
-                (click)="onRemove()"></button>
-      </div>
+  <div class="row mb-2">
+    <div class="col-md-2">
+      {{ cartItem().vehicle.name }}
     </div>
-  </div>
-
-  <div class='card-body'>
-    <div class="row">
-      <div class="col-md-4">Price (credits):</div>
-      <div class="col-md-6">{{cartItem().vehicle.cost_in_credits | number:'1.2-2'}}</div>
+    <div class="col-md-2">
+      {{ cartItem().vehicle.vehicle_class }}
     </div>
-    <div class="row">
-      <div class="col-md-4">Class:</div>
-      <div class="col-md-6">{{cartItem().vehicle.vehicle_class}}</div>
+    <div class="col-md-2 text-center">
+      {{ cartItem().vehicle.cost_in_credits | number:'1.2-2' }}
     </div>
-
-    <div class="row">
-      <div class="col-md-4">Quantity:</div>
-      <div class="col-md-6">
-        <select class="form-select"
-                aria-label="Quantity list"
-                style="margin-bottom: 10px;"
-                [ngModel]="cartItem().quantity"
-                (change)="onQuantitySelected($any($event.target).value)">
-          <option disabled
-                  value="">--Select a quantity--</option>
-          <option *ngFor="let q of qtyArr()">{{ q }}</option>
-        </select>
-      </div>
+    <div class="col-md-2 text-center">
+      <select class="form-select"
+              aria-label="Quantity list"
+              style="margin-bottom: 10px; width:60px; margin: 0 auto"
+              [ngModel]="cartItem().quantity"
+              (ngModelChange)="onQuantitySelected($event)">
+        <option disabled
+                value="">--Select a quantity--</option>
+        <option *ngFor="let q of qtyArr()">{{ q }}</option>
+      </select>
     </div>
-
-    <div class="row">
-      <div class="col-md-4">Cost:</div>
-      <div class="col-md-6">{{exPrice() | number:'1.2-2'}}</div>
+    <div class="col-md-2 text-end">
+      {{ exPrice() | number:'1.2-2'}}
+    </div>
+    <div class="col-md-2 text-center">
+      <button type="button"
+              class="btn btn-warning"
+              aria-label="Close"
+              (click)="onRemove()">
+        Delete
+      </button>
     </div>
   </div>
 </div>

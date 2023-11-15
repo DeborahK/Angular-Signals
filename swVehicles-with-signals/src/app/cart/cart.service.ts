@@ -30,11 +30,15 @@ export class CartService {
       item.vehicle.name === vehicle.name);
     if (index === -1) {
       // Not already in the cart, so add with default quantity of 1
-      this.cartItems.mutate(items => items.push({ vehicle, quantity: 1 }));
+      this.cartItems.update(items => [...items, { vehicle, quantity: 1 }]);
     } else {
       // Already in the cart, so increase the quantity by 1
-      this.cartItems.mutate(items =>
-        items[index] = { vehicle, quantity: items[index].quantity + 1 });
+      this.cartItems.update(items =>
+        [
+          ...items.slice(0, index),
+          { ...items[index], quantity: items[index].quantity + 1 },
+          ...items.slice(index + 1)
+        ]);
     }
   }
 

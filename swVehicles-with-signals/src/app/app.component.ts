@@ -1,9 +1,13 @@
 import { Component, computed, inject } from '@angular/core';
 
 import { CartService } from './cart/cart.service';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'sw-root',
+  selector: 'swv-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

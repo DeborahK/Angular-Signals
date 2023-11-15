@@ -1,5 +1,5 @@
 <div class="card border-secondary"
-     *ngIf='cartItems().length; else noItems'>
+     *ngIf='cartItems().length'>
 
   <div class='card-header text-secondary fw-bold'>
     <div class="row">
@@ -10,33 +10,31 @@
   <div class='card-body'>
     <div class="row">
       <div class="col-md-4">Subtotal:</div>
-      <div class="col-md-4"
-           style='text-align:right'>{{subTotal() | number:'1.2-2'}}</div>
+      <div class="col-md-4 text-end">
+        {{subTotal() | number:'1.2-2'}}
+      </div>
     </div>
     <div class="row">
       <div class="col-md-4">Delivery:</div>
-      <div class="col-md-4"
-           style='text-align:right'
+      <div class="col-md-4 text-end"
            *ngIf='deliveryFee()'>{{deliveryFee() | number:'1.2-2'}}</div>
-      <div class="col-md-4"
-           style='text-align:right;color:red'
+      <div class="col-md-4 text-end"
+           style='color:green'
            *ngIf='!deliveryFee()'>Free</div>
     </div>
 
     <div class="row">
       <div class="col-md-4">Estimated Tax:</div>
-      <div class="col-md-4"
-           style='text-align:right'>{{tax() | number:'1.2-2'}}</div>
+      <div class="col-md-4 text-end">
+        {{tax() | number:'1.2-2'}}
+      </div>
     </div>
 
     <div class="row">
       <div class="col-md-4"><b>Total:</b></div>
-      <div class="col-md-4"
-           style='text-align:right'><b>{{totalPrice() | number:'1.2-2'}}</b></div>
+      <div class="col-md-4 text-end">
+        <b>{{totalPrice() | number:'1.2-2'}}</b>
+      </div>
     </div>
   </div>
 </div>
-
-<ng-template #noItems>
-  No items in cart
-</ng-template>
