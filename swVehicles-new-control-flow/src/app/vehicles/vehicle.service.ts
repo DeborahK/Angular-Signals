@@ -38,9 +38,9 @@ export class VehicleService {
   );
 
   // Expose signals from this service
-  vehicles = toSignal(this.vehicles$, {initialValue: [] as Vehicle[]});
+  vehicles = toSignal(this.vehicles$, { initialValue: [] as Vehicle[] });
   selectedVehicle = signal<Vehicle | undefined>(undefined);
-  
+
   private vehicleFilms$ = toObservable(this.selectedVehicle).pipe(
     filter(Boolean),
     switchMap(vehicle =>
@@ -48,16 +48,13 @@ export class VehicleService {
         this.http.get<Film>(link)))
     )
   );
-  vehicleFilms = toSignal<Film[], Film[]>(this.vehicleFilms$, {initialValue: []});
+  vehicleFilms = toSignal<Film[], Film[]>(this.vehicleFilms$, { initialValue: [] });
 
   vehicleSelected(vehicleName: string) {
     const foundVehicle = this.vehicles().find((v) => v.name === vehicleName);
     this.selectedVehicle.set(foundVehicle);
   }
 
-  constructor() {
-    
-  }
   private handleError(err: HttpErrorResponse): Observable<never> {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console

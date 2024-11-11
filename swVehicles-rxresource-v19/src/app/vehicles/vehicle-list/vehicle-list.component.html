@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <sw-filter [(filter)]='listFilter' />
+
+  <div class='card-body'>
+    @if (isLoading()) {
+      <div>...Loading</div>
+    }
+    <div class="list-group">  
+      @for (vehicle of filteredVehicles(); track vehicle) {
+        <button type="button"
+                class="list-group-item"
+                [ngClass]="{'active': vehicle?.name === selectedVehicle()?.name}"
+                (click)="onSelected(vehicle.name)">
+          {{ vehicle.name }}
+        </button>
+      }
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert alert-danger">
+        {{errorMessage }}
+      </div>
+    }
+  </div>

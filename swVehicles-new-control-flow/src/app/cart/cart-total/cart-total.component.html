@@ -1,0 +1,38 @@
+@if (cartItems().length) {
+<div class="card border-secondary">
+  <div class='card-header text-secondary fw-bold'>
+    <div class="row">
+      <div class="col-md-12">Cart Total</div>
+    </div>
+  </div>
+  <div class='card-body'>
+    <div class="row">
+      <div class="col-md-4">Subtotal:</div>
+      <div class="col-md-4 text-end">
+        {{subTotal() | number:'1.2-2'}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">Delivery:</div>
+      @if (deliveryFee()) {
+        <div class="col-md-4 text-end">{{deliveryFee() | number:'1.2-2'}}</div>
+      } @else {
+        <div class="col-md-4 text-end"
+            style='color:green'>Free</div>
+      }
+    </div>
+    <div class="row">
+      <div class="col-md-4">Estimated Tax:</div>
+      <div class="col-md-4 text-end">
+        {{tax() | number:'1.2-2'}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"><b>Total:</b></div>
+      <div class="col-md-4 text-end">
+        <b>{{totalPrice() | number:'1.2-2'}}</b>
+      </div>
+    </div>
+  </div>
+</div>
+}

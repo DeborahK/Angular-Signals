@@ -1,0 +1,38 @@
+@if (cartItem()) {
+  <div>
+    <div class="row mb-2">
+      <div class="col-md-2">
+        {{ cartItem().vehicle.name }}
+      </div>
+      <div class="col-md-2">
+        {{ cartItem().vehicle.vehicle_class }}
+      </div>
+      <div class="col-md-2 text-center">
+        {{ cartItem().vehicle.cost_in_credits | number:'1.2-2' }}
+      </div>
+      <div class="col-md-2 text-center">
+        <select class="form-select"
+          aria-label="Quantity list"
+          style="margin-bottom: 10px; width:60px; margin: 0 auto"
+          [ngModel]="cartItem().quantity"
+          (ngModelChange)="onQuantitySelected($event)">
+          <option disabled value="">--Select a quantity--</option>
+          @for (q of qtyArr(); track q) {
+            <option>{{ q }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-2 text-end">
+        {{ exPrice() | number:'1.2-2'}}
+      </div>
+      <div class="col-md-2 text-center">
+        <button type="button"
+          class="btn btn-warning"
+          aria-label="Close"
+          (click)="onRemove()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+}
