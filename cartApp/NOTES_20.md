@@ -5,46 +5,41 @@
 - quantity
   - signal is a primative
   - type can be inferred
-- UI
-  - displayed using ngModel in the template
->[RUN]
-
-## Task 2: Use an Effect
-- effect
-  - Execute code when the signal changes
-  - Angular team recommends minimizing their use
-  - Great for logging whenever a signal changes
-
-## Task 3: Declare a signal containing an object
 - selectedVehicle
   - Generic argument helpful
   - Has to handle undefined/null
-- UI
-  - Open the box to read the value
-  - Dot down into the properties
-  - Handle null/undefined
-
-## Task 4: Declare a signal that is an array
 - cart
   - Generic argument helpful
 - vehicles
   - Generic argument helpful
   - Hardcoded - would get these from an http request
-- UI
+
+>[RUN]
+
+## Task 2: Display in the UI
+- quantity
+  - displayed using ngModel in the template
+- selectedVehicle
+  - Open the box to read the value
+  - Dot down into the properties
+  - Handle null/undefined
+- vehicles and cart
   - Vehicles in a select box
   - cart items using @for
 
-## Task 5: Use an effect to log a signal
+## Task 3: Use an Effect
 - effect
-  - View how the cart appers in the console.
+  - Execute code when the signal changes
+  - Angular team recommends minimizing their use
+  - Great for logging whenever a signal changes
 
-## Task 6: Add an item to that array
+## Task 4: Add an item to an array in a signal
 - Add an item to an array within a signal
   - Let's try reading the array from the signal
   - Then pushing to that array.
   - Notice in the console that it doesn't display! The signal is not changed.
 
-## Task 7: Update a Signal
+## Task 5: Update a Signal
 - Update a signal using .update
 ```
   // Treat as immutable
@@ -58,39 +53,15 @@
   }
 ```
 
-## Task 8: Display the array signal in the UI
-- UI
-  - Should display in the UI
-  - AND in the console
-
-## Task 9: Code reacts to those notifications *when possible*
-```
-    // Set the quantity signal
-    // When the signal changes, it provides notification
-    // But not until the UI has an opportunity to re-render  
-    this.quantity.set(0);
-    this.quantity.set(5);
-    this.quantity.set(42);
-```
-> [What will we see in the console?]
-> [COMMENT IT OUT!!]
-
-## Task 10: Declare a computed property
+## Task 6: Declare a computed property
 - computed
-  - Calculate the total price
-  - handle null values
-
-## Task 11: Declare a computed property for styles
-- computed
+  - Calculate the total price, handle null values
   - Use it for styling
-
-## Task 12: Declare a computed property for UI elements
-- computed
   - Use it to control the UI
 - everything is declarative!
 - easier for unit testing
 
-## Task 13: Modifying a selection
+## Task 7: Modifying a selection
 - On selection
   - Use set to replace the value in the signal
 
@@ -101,7 +72,7 @@
 
 >[What happens to the quantity when we change the vehicle?]
 
-## Task 14: linkedSignal (primitive)
+## Task 8: linkedSignal (primitive)
 - computed
   - We want our signal to change when the selected vehicle changes
 
