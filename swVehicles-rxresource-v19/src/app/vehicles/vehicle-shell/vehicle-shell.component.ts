@@ -3,9 +3,8 @@ import { VehicleListComponent } from "../vehicle-list/vehicle-list.component";
 import { VehicleDetailComponent } from "../vehicle-detail/vehicle-detail.component";
 
 @Component({
-  selector: 'sw-vehicle-shell',
-  standalone: true,
-  template: `
+    selector: 'sw-vehicle-shell',
+    template: `
   <div class='row'>
     <div class='col-md-4'>
         <sw-vehicle-list></sw-vehicle-list>
@@ -15,7 +14,7 @@ import { VehicleDetailComponent } from "../vehicle-detail/vehicle-detail.compone
     </div>
 </div>
   `,
-  imports: [VehicleListComponent, VehicleDetailComponent]
+    imports: [VehicleListComponent, VehicleDetailComponent]
 })
 export class VehicleShellComponent {
 

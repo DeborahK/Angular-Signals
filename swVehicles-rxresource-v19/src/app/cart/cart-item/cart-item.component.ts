@@ -6,10 +6,9 @@ import { CartItem } from '../cart';
 import { CartService } from '../cart.service';
 
 @Component({
-  selector: 'sw-cart-item',
-  standalone: true,
-  imports: [DecimalPipe, FormsModule],
-  templateUrl: './cart-item.component.html'
+    selector: 'sw-cart-item',
+    imports: [DecimalPipe, FormsModule],
+    templateUrl: './cart-item.component.html'
 })
 export class CartItemComponent {
   cartService = inject(CartService);

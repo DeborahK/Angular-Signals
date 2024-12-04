@@ -4,10 +4,9 @@ import { VehicleService } from '../vehicle.service';
 import { FilterComponent } from '../../filter/filter.component';
 
 @Component({
-  selector: 'sw-vehicle-list',
-  standalone: true,
-  imports: [NgClass, FilterComponent],
-  templateUrl: './vehicle-list.component.html'
+    selector: 'sw-vehicle-list',
+    imports: [NgClass, FilterComponent],
+    templateUrl: './vehicle-list.component.html'
 })
 export class VehicleListComponent {
   pageTitle = 'Vehicles';

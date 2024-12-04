@@ -5,10 +5,9 @@ import { CartService } from '../cart.service';
 import { CartItemComponent } from "../cart-item/cart-item.component";
 
 @Component({
-  selector: 'sw-cart-list',
-  standalone: true,
-  imports: [CartItemComponent],
-  templateUrl: 'cart-list.component.html'  
+    selector: 'sw-cart-list',
+    imports: [CartItemComponent],
+    templateUrl: 'cart-list.component.html'
 })
 export class CartListComponent {
   pageTitle = 'Cart';

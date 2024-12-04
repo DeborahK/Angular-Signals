@@ -4,10 +4,9 @@ import { DecimalPipe } from '@angular/common';
 import { CartService } from '../cart.service';
 
 @Component({
-  selector: 'sw-cart-total',
-  standalone: true,
-  imports: [DecimalPipe],
-  templateUrl: './cart-total.component.html'
+    selector: 'sw-cart-total',
+    imports: [DecimalPipe],
+    templateUrl: './cart-total.component.html'
 })
 export class CartTotalComponent {
   cartService = inject(CartService);
