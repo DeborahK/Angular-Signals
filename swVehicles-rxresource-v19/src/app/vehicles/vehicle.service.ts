@@ -41,9 +41,9 @@ export class VehicleService {
     loader: ({ request: vehicle }) => {
       if (vehicle) {
        return forkJoin(vehicle.films.map(link =>
-        this.http.get<Film>(link)))
+        this.http.get<Film>(link)));
       }
-      return of([] as Film[])
+      return of([] as Film[]);
     }
   });
   vehicleFilms = computed(() => this.vehicleFilmsResource.value() ?? [] as Film[]);
