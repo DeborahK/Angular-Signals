@@ -39,7 +39,6 @@ export class AppComponent {
 
   // React to changes and execute code
   qtyEff = effect(() => console.log('quantity:', this.quantity()));
-  cartEff = effect(() => console.log('cart:', JSON.stringify(this.cart())));
 }
 
 export interface Vehicle {
