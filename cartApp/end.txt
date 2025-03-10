@@ -28,24 +28,24 @@ export class AppComponent {
   private vehicleUrl = 'https://swapi.py4e.com/api/vehicles';
 
   // Signals to support the template
-  quantity = signal<number>(1);
+  quantity = signal(1);
   selectedVehicle = signal<Vehicle | undefined>(undefined);
 
   // Retrieve data into a signal
   vehiclesResource = httpResource<VehicleResponse>(this.vehicleUrl);
   vehicles = computed(() => this.vehiclesResource.value()?.results);
 
-  // Automatically re-get data based on a signal
-  filmResource = httpResource<Film>(() => 
-    `${this.selectedVehicle()?.films[0]}`);
+  // Retrieve related data when a signal changes
+  filmResource = httpResource<Film>(() =>
+    this.selectedVehicle()?.films[0]);
   film = this.filmResource.value;
 
   // React to changes and recompute
-  total = computed(() => (this.selectedVehicle()?.cost_in_credits ?? 0) * this.quantity());
+  total = computed(() =>
+    (this.selectedVehicle()?.cost_in_credits ?? 0) * this.quantity());
   color = computed(() => this.total() > 50000 ? 'green' : 'blue');
 
-  // React to changes and execute code
-  qtyEff = effect(() => console.log('quantity:', this.quantity()));
+  qtyEffect = effect(() => console.log(this.quantity()));
 }
 
 export interface VehicleResponse {

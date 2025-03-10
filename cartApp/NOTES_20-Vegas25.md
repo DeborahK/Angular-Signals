@@ -8,6 +8,9 @@
 quantity = signal<number>(1);
 ```
 ```
+// Fix total: Read signal
+```
+```
 // See how it's bound to the input box
 ```
 
@@ -48,9 +51,13 @@ quantity = signal<number>(1);
   total = computed(() => this.selectedVehicle().price * this.quantity());
 ```
 ```
+  // Fix color: Read signal
+```
+```
   // Display in the UI 
   <div>Total: {{ total() }}</div>
 ```
+>[RUN]
 
 ## Task 6: Declare a computed property for styles
 ```
@@ -62,33 +69,15 @@ quantity = signal<number>(1);
   // Modify the UI
     <div [style.color]='color()'>Total: {{ total() }}</div>
 ```
+>[RUN]
 
-## Task 7: Get data when a signal changes
+## Task 7: Get related data when a signal changes
 ```
   // Automatically re-get data based on a signal
   filmResource = httpResource<Film>(() => 
-    `${this.selectedVehicle()?.films[0]}`);
+    this.selectedVehicle()?.films[0]);
   film = this.filmResource.value;
 ```
-
-## Task 14: linkedSignal (primitive)
 ```
- // We want our signal to change when the selected vehicle changes
-  quantity = computed(() => {
-    if (this.selectedVehicle()) {
-      return 1;
-    }
-    return 0;
-  });
-```
-
-> [OOPS! What happened? Check the browser console]
-
-```
- // Use a linkedSignal instead
- // NOTE: Code needs to move BELOW selectedVehicle
-  quantity = linkedSignal({
-    source: this.selectedVehicle,
-    computation: () => 1
-  });
+  // Fix UI: Read the signal
 ```
