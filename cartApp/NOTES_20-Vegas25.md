@@ -8,97 +8,51 @@
 quantity = signal<number>(1);
 ```
 ```
-// Bind it in the UI
-// Change the template to inline
-  template: `
-    <h1>Shopping Cart</h1>
-    <div>Quantity: <input type='number' [(ngModel)]='quantity' ></div>
-  `,
+// See how it's bound to the input box
 ```
-```
-// Import FormsModule
-  imports: [RouterOutlet, FormsModule],
-```
->[RUN]
 
 ## Task 2: Use an Effect
 ```
   // React to changes and execute code
   qtyEff = effect(() => console.log('quantity:', this.quantity()));
 ```
+>[RUN]
 
 ## Task 3: Declare a signal containing an object
 ```
-// Define the interface for the type
-export interface Vehicle {
-  id: number;
-  name: string;
-  price: number;
-}
-```
-```
 // Declare the signal
-  selectedVehicle = signal<Vehicle>({ id: 1, name: 'AT-AT', price: 10050});
+  selectedVehicle = signal<Vehicle | undefined>(undefined);
 ```
 ```
-// Display it in the UI
+// See how it's bound to the select box
+```
+```
+// Display the signal values in the UI
     <div>Vehicle: {{ selectedVehicle().name }}</div>
     <div>Price: {{ selectedVehicle().price }}</div>
 ```
-## Task 4: Declare a signal that is an array
+## Task 4: Retrieve data into a signal (experimental!)
 ```
-// Define the interface for the type
-export interface CartItem {
-  vehicle: Vehicle;
-  quantity: number;
-}
+  // Retrieve data into a signal
+  vehiclesResource = httpResource<VehicleResponse>(this.vehicleUrl);
+  vehicles = computed(() => this.vehiclesResource.value()?.results);
 ```
 ```
-// Declare the signal
-  cart = signal<CartItem[]>([]);
+// See how it populates the select box
 ```
+>[RUN]
 
-## Task 5: Use an effect to log a signal
-```
-  // React to changes and execute code
-  cartEff = effect(() => console.log('cart:', JSON.stringify(this.cart())));
-```
-
-## Task 6: Display the array signal in the UI
-```
-    // Display the cart
-    // Uses the new control flow template syntax
-    <br/>
-    @for (item of cart(); track item) {
-      <div>{{ item.vehicle.name }}: {{item.quantity}}</div>
-    } @empty {
-      <div>No vehicles in list</div>
-    }
-```
-
-## Task 9: Code reacts to those notifications *when possible*
-```
-    // Set the quantity signal
-    // When the signal changes, it provides notification
-    // But not until the UI has an opportunity to re-render  
-    this.quantity.set(0);
-    this.quantity.set(5);
-    this.quantity.set(42);
-```
-> [What will we see in the console?]
-> [COMMENT IT OUT!!]
-
-## Task 10: Declare a computed property
+## Task 5: Declare a computed property
 ```
   // React to changes and recompute
   total = computed(() => this.selectedVehicle().price * this.quantity());
 ```
 ```
-  // Display in the UI (before the button)
+  // Display in the UI 
   <div>Total: {{ total() }}</div>
 ```
 
-## Task 11: Declare a computed property for styles
+## Task 6: Declare a computed property for styles
 ```
   // React to changes and recompute
   // Ternary operator
@@ -109,56 +63,13 @@ export interface CartItem {
     <div [style.color]='color()'>Total: {{ total() }}</div>
 ```
 
-## Task 12: Declare a computed property for UI elements
+## Task 7: Get data when a signal changes
 ```
-  // React to changes and recompute
-  disableButton = computed(() => this.quantity() <1);
+  // Automatically re-get data based on a signal
+  filmResource = httpResource<Film>(() => 
+    `${this.selectedVehicle()?.films[0]}`);
+  film = this.filmResource.value;
 ```
-```
-  // Modify the UI
-  <button (click)='addToList()'
-   [disabled]='disableButton()'>Add to List</button>
-```
-
-## Task 13: Modifying a selection
-```
-  // Define an array of vehicles
-    vehicles = signal<Vehicle[]>([
-    { id: 1, name: 'AT-AT', price: 10050 },
-    { id: 2, name: 'Sand Crawler', price: 22050 },
-    { id: 3, name: 'TIE Fighter', price: 55000 }
-  ])
-```
-```
-  // Display them in a select box
-  <select class="select" (change)="onSelectedVehicle($event.target)">
-    <option value="" disabled selected>--Select a vehicle--</option>
-    @for(vehicle of vehicles(); track vehicle) {
-      <option [value]='vehicle.id'>{{ vehicle.name }}</option>
-    }
-  </select>
-```
-```
-  // On selection, change the selected vehicle
-  onSelectedVehicle(ele: EventTarget | null) {
-    // Get the id from the element
-    const id = Number((ele as HTMLSelectElement).value);
-    // Find the vehicle in the array
-    const foundVehicle = this.vehicles().find((v) => v.id === id);
-
-    // Set it as the selected vehicle
-    if (foundVehicle) {
-      this.selectedVehicle.set(foundVehicle);
-    }
-  }
-```
-
-1. Pick a vehicle
-2. Set the quantity
-3. Add to list
-4. Select a different vehicle
-
->[What happens to the quantity when we change the vehicle?]
 
 ## Task 14: linkedSignal (primitive)
 ```
