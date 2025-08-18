@@ -1,0 +1,53 @@
+@if (vehicle()) {
+  <div class="card">
+    <div class="card-header">
+      {{pageTitle()}}
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">Name:</div>
+        <div class="col-md-8">{{vehicle()?.name}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Classification:</div>
+        <div class="col-md-8">{{vehicle()?.vehicle_class}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Price (in credits):</div>
+        <div class="col-md-8">{{vehicle()?.cost_in_credits | number:'1.2-2'}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Crew:</div>
+        <div class="col-md-8">{{vehicle()?.crew}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Passengers:</div>
+        <div class="col-md-8">{{vehicle()?.passengers}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Cargo Capacity:</div>
+        <div class="col-md-8">{{vehicle()?.cargo_capacity}}</div>
+      </div>
+
+      @if (errorMessage()) {
+        <div class="alert alert-danger">
+          {{errorMessage() }}
+        </div>
+      } @else if (vehicleFilms()) {
+        <div class="row">
+          <div class="col-md-4">Films:</div>
+          <div class="col-md-6">
+            <ul class="list-group">
+              @for (film of vehicleFilms(); track film) {
+                <li class="list-group-item"
+                    style="color:cornflowerblue;font-weight: bold;">
+                  {{film.title}}
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}

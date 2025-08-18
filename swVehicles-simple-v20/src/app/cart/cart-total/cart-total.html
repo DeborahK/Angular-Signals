@@ -1,0 +1,54 @@
+@if (selectedVehicle()) {
+  <div class="card border-secondary">
+    <div class='card-header'>
+      <div class="row">
+        <div class="col-md-12">Cart Total</div>
+      </div>
+    </div>
+    <div class='card-body'>
+      <div class="row mb-2">
+        <div class="col-md-4">Price (credits)</div>
+        <div class="col-md-4 text-end">
+          {{price() | number:'1.2-2'}}
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4 fw-bold">Quantity</div>
+        <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-2 text-end">
+          <input type="number"
+                style="width: 50px;text-align:right"
+                [(ngModel)]="quantity">
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-4">Subtotal:</div>
+        <div class="col-md-4 text-end">
+          {{subTotal() | number:'1.2-2'}}
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4">Delivery:</div>
+        @if (deliveryFee()) {
+        <div class="col-md-4 text-end">{{deliveryFee() | number:'1.2-2'}}</div>
+        } @else {
+        <div class="col-md-4 text-end"
+            style='color:green; font-weight: bold;'>Free</div>
+        }
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4">Estimated Tax:</div>
+        <div class="col-md-4 text-end">
+          {{tax() | number:'1.2-2'}}
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4"><b>Total:</b></div>
+        <div class="col-md-4 text-end" style='color:cornflowerblue; font-weight: bold;'>
+          {{totalPrice() | number:'1.2-2'}}
+        </div>
+      </div>
+    </div>
+  </div>
+}

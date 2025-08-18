@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class='card-body'>
+    @if (isLoading()) {
+      <div>...Loading</div>
+    } @else if (errorMessage()) {
+      <div class="alert alert-danger">
+        {{errorMessage() }}
+      </div>
+    } @else {
+      <div class="list-group">
+          <select [(ngModel)]="selectedVehicle">
+            <option value="undefined" selected>--Select a vehicle--</option>
+            @for(vehicle of vehicles(); track vehicle) {
+            <option [ngValue]="vehicle">{{vehicle.name}}</option>
+            }
+          </select>
+      </div>
+    }
+  </div>
