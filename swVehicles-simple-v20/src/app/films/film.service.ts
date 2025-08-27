@@ -21,15 +21,17 @@ export class FilmService {
     )),
     defaultValue: []
   });
-  error = this.vehicleFilmsResource.error;
-  errorMessage = computed(() => {
-    const err = this.error();
-    if (err) {
-      return `Error retrieving films: ${getNestedError(err)}`;
-    } else {
-      return ''
-    }
-  });
+  // Manage the error message in the service
+  // OR in the component
+  // error = this.vehicleFilmsResource.error;
+  // errorMessage = computed(() => {
+  //   const err = this.error();
+  //   if (err) {
+  //     return `Error retrieving films: ${getNestedError(err)}`;
+  //   } else {
+  //     return ''
+  //   }
+  // });
 
   // Accessing the resource generates an error if the http request fails
   private eff = effect(() => {

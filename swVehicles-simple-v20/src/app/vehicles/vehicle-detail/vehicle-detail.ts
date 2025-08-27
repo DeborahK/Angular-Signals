@@ -17,5 +17,6 @@ export class VehicleDetail {
   pageTitle = computed(() => this.vehicle() ? `Detail for: ${this.vehicle()?.name}` : '');
 
   vehicleFilms = this.filmService.vehicleFilmsResource.value;
-  errorMessage = this.filmService.errorMessage;
+  error = this.filmService.vehicleFilmsResource.error;
+  errorMessage = computed(() => this.error() ? this.error()?.message : '');
 }
