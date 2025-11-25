@@ -9,6 +9,8 @@
     "test": "ng test"
   },
   "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
     "overrides": [
       {
         "files": "*.html",
@@ -19,29 +21,25 @@
     ]
   },
   "private": true,
+  "packageManager": "npm@11.6.4",
   "dependencies": {
-    "@angular/common": "^20.1.0",
-    "@angular/compiler": "^20.1.0",
-    "@angular/core": "^20.1.0",
-    "@angular/forms": "^20.1.0",
-    "@angular/platform-browser": "^20.1.0",
-    "@angular/router": "^20.1.0",
-    "angular-in-memory-web-api": "^0.20.0",
+    "@angular/common": "^21.0.1",
+    "@angular/compiler": "^21.0.1",
+    "@angular/core": "^21.0.1",
+    "@angular/forms": "^21.0.1",
+    "@angular/platform-browser": "^21.0.1",
+    "@angular/router": "^21.0.1",
+    "angular-in-memory-web-api": "^0.21.0",
     "bootstrap": "^5.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.1.0",
-    "@angular/cli": "^20.1.0",
-    "@angular/compiler-cli": "^20.1.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.8.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "@angular/build": "^21.0.0",
+    "@angular/cli": "^21.0.0",
+    "@angular/compiler-cli": "^21.0.0",
+    "jsdom": "^27.1.0",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
   }
 }
