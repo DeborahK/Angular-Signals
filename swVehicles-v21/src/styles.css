@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+div.card-header {
+ background-color: cornflowerblue;
+ color: white;
+ font-size: large;
+ font-weight: bold;
+}
+
+div.card {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.table {
+  margin-top: 10px;
+}
