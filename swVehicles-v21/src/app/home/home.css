@@ -1,64 +1,14 @@
 /* Home page grid and color styles */
 
-.home-card {
-	display: grid;
-	grid-template-rows: auto 1fr;
-	max-width: 500px;
-	margin: 2rem auto;
-	background: #fff;
-	border-radius: 12px;
-	box-shadow: 0 2px 12px rgba(33,67,69,0.15);
-	border: 2px solid var(--base-color);
-}
-
-.home-header {
-	background: var(--base-color);
-	color: #fff;
-	font-size: 2rem;
-	font-weight: bold;
-	padding: 1.5rem 1rem 1rem 1rem;
-	border-radius: 12px 12px 0 0;
-	text-align: center;
-}
-
-.home-body {
-	display: grid;
-	grid-template-rows: auto 1fr;
-	padding: 2rem 1.5rem 2.5rem 1.5rem;
-}
-
 .home-container {
   width: 100%;
   padding: 0 var(--spacing-md);
   text-align: center;
 }
 
-/* Images */
-.home-img {
-  max-height: 220px;
+.home-image {
+  max-height: 420px;
 	padding-bottom: 1.5rem;
 	width: auto;
-	display: block;
 }
 
-.home-info {
-	display: grid;
-	gap: 0.5rem;
-	text-align: center;
-	color: var(--base-color);
-}
-
-.home-info h3 {
-	margin: 0.5rem 0 0.2rem 0;
-	color: var(--base-color);
-}
-
-.home-info a {
-	color: var(--base-color);
-	text-decoration: underline;
-	font-weight: 500;
-	transition: color 0.2s;
-}
-.home-info a:hover {
-	color: #ffd700;
-}

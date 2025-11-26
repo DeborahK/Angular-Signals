@@ -2,9 +2,9 @@
 
 :root {
   /* Primary Colors - Bronze and weathered metals */
-  --primary-color: #b8860b;        /* Dark goldenrod bronze */
-  --primary-dark: #8b6914;         /* Deep bronze */
-  --primary-light: #daa520;        /* Lighter bronze */
+  --primary-color: #927361;        /* Dark goldenrod bronze */
+  --primary-dark: #7A6051;         /* Deep bronze */
+  --primary-light: #daa520;        /* Lighter bronze #3C3A36, #35312D */
   
   /* Secondary/Accent Colors - Rusty oranges and browns */
   --secondary-color: #cd7f32;      /* Classic bronze */
@@ -25,19 +25,18 @@
   --white: #faf8f3;                /* Warm white */
   
   /* Text */
-  --text-primary: #1a1612;         /* Deep brown-black */
+  --text-primary: #3C3A36;         /* Deep brown-black */
   --text-secondary: #6b5d52;       /* Muted bronze brown */
   --text-light: #f5f1e8;           /* Light on dark */
   
   /* Special Effects */
   --border-color: #b8a68f;         /* Sandy bronze border */
-  --border-glow: #7A6051;          /* Bronze glow b8860b */
-  --hologram-blue: #4a7c9e;        /* Muted tech blue */
+  --border-glow: #7A6051;          /* Bronze glow */
   
   /* Gradients - Weathered metal looks */
   --gradient-space: linear-gradient(135deg, #1a1612 0%, #2d2420 100%);
   --gradient-card: linear-gradient(to bottom, #f5f1e8, #e8dcc8);
-  --gradient-bronze: linear-gradient(135deg, #A2806C 0%, #7A6051 100%);
+  --gradient-bronze: linear-gradient(135deg, #927361 0%, #7A6051 100%);
   /* #cd7f32 ... #8b6914 First try: #A2806C */
   
   /* Spacing */
@@ -49,10 +48,10 @@
   --spacing-xxl: 3rem;
   
   /* Typography */
-  --font-size-base: 1rem;
-  --font-size-sm: 0.875rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
+  --font-size-base: 1.5rem;
+  --font-size-sm: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.875rem;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
   
