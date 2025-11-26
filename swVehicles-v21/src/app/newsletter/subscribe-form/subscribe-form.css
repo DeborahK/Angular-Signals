@@ -1,0 +1,179 @@
+/* Subscribe Form Specific Styles */
+
+/* Form Layout */
+form {
+  max-width: 100%;
+}
+
+/* Form Row Grid */
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-md, 1rem);
+  margin-bottom: var(--spacing-md, 1rem);
+}
+
+.col-md-3 { grid-column: span 3; }
+.col-md-9 { grid-column: span 9; }
+
+/* Offset for form controls */
+.offset-md-3 {
+  grid-column-start: 4;
+}
+
+/* Responsive form layout */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  
+  .col-md-3,
+  .col-md-9 {
+    grid-column: span 1;
+  }
+  
+  .offset-md-3 {
+    grid-column-start: 1;
+  }
+}
+
+/* Form Controls */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+  font-size: var(--font-size-base, 1rem);
+  line-height: 1.5;
+  color: var(--text-primary, #0f172a);
+  background-color: var(--white, #ffffff);
+  border: 1px solid var(--border-color, #cbd5e1);
+  border-radius: var(--border-radius, 0.375rem);
+  transition: var(--transition-glow, all 0.3s ease-in-out);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), 0 0 15px rgba(59, 130, 246, 0.2);
+  background-color: rgba(59, 130, 246, 0.02);
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary, #64748b);
+  opacity: 0.6;
+}
+
+/* Form Labels */
+.col-form-label {
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--spacing-sm, 0.5rem) + 1px);
+  padding-bottom: calc(var(--spacing-sm, 0.5rem) + 1px);
+  margin-bottom: 0;
+  font-weight: var(--font-weight-normal, 400);
+}
+
+/* Checkbox Styles */
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 0.5rem);
+}
+
+.form-check-input {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--primary-color, #3b82f6);
+  transition: var(--transition-base, all 0.2s ease-in-out);
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.form-check-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+  font-size: var(--font-size-base, 1rem);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius, 0.375rem);
+  cursor: pointer;
+  transition: var(--transition-glow, all 0.3s ease-in-out);
+  user-select: none;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  color: var(--white, #ffffff);
+  background: linear-gradient(135deg, var(--primary-color, #3b82f6) 0%, var(--primary-dark, #1e40af) 100%);
+  border-color: var(--primary-color, #3b82f6);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-light, #60a5fa) 0%, var(--primary-color, #3b82f6) 100%);
+  border-color: var(--primary-light, #60a5fa);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+  color: var(--secondary-color, #f59e0b);
+  background-color: transparent;
+  border-color: var(--secondary-color, #f59e0b);
+}
+
+.btn-outline-secondary:hover:not(:disabled) {
+  color: var(--white, #ffffff);
+  background-color: var(--secondary-color, #f59e0b);
+  border-color: var(--secondary-color, #f59e0b);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Margin Utilities */
+.mb-3 { margin-bottom: var(--spacing-md, 1rem); }
+.me-2 { margin-right: var(--spacing-sm, 0.5rem); }
+.mt-3 { margin-top: var(--spacing-md, 1rem); }
+
+/* Text Utilities */
+.text-danger { 
+  color: var(--danger-color, #ef4444);
+  font-weight: var(--font-weight-bold, 700);
+}
+
+/* Alert Styles for form messages */
+.alert {
+  padding: var(--spacing-md, 1rem);
+  margin-bottom: var(--spacing-md, 1rem);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius, 0.375rem);
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
