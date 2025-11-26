@@ -1,0 +1,106 @@
+<div class="card">
+  <div class="card-header">
+    Newsletter Subscription
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="row mb-3">
+        <label class="col-md-3 col-form-label" for="firstNameId">
+          First Name
+        </label>
+        <div class="col-md-9">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="firstNameId"
+            placeholder="First Name (optional)" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-md-3 col-form-label" for="lastNameId">
+          Last Name
+        </label>
+        <div class="col-md-9">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="lastNameId"
+            placeholder="Last Name (optional)" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-md-3 col-form-label" for="emailId">
+          Email <span class="text-danger">*</span>
+        </label>
+        <div class="col-md-9">
+          <input 
+            type="email" 
+            class="form-control" 
+            id="emailId"
+            placeholder="Email (required)"
+            required />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-md-3 col-form-label" for="yearsAsFanId">
+          Years as a Fan
+        </label>
+        <div class="col-md-9">
+          <input 
+            type="number" 
+            class="form-control" 
+            id="yearsAsFanId"
+            placeholder="How many years have you been a Star Wars fan?"
+            min="0"
+            max="100" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-9 offset-md-3">
+          <div class="form-check">
+            <input 
+              type="checkbox" 
+              class="form-check-input" 
+              id="priceAlertsId" />
+            <label class="form-check-label" for="priceAlertsId">
+              Send me price alerts for new vehicles
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-9 offset-md-3">
+          <button 
+            type="submit" 
+            class="btn btn-primary me-2">
+            Subscribe
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-outline-secondary">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Success message (conditionally displayed) -->
+    <!-- @if (subscriptionSuccess) {
+      <div class="alert alert-success mt-3">
+        Thank you for subscribing to our newsletter!
+      </div>
+    } -->
+
+    <!-- Error message (conditionally displayed) -->
+    <!-- @if (errorMessage) {
+      <div class="alert alert-danger mt-3">
+        {{errorMessage}}
+      </div>
+    } -->
+  </div>
+</div>
