@@ -6,7 +6,8 @@ import { FilmService } from '../../films/film.service';
 @Component({
   selector: 'sw-vehicle-detail',
   imports: [DecimalPipe],
-  templateUrl: './vehicle-detail.html'
+  templateUrl: './vehicle-detail.html',
+  styleUrl: './vehicle-detail.css'
 })
 export class VehicleDetail {
   private vehicleService = inject(VehicleService);

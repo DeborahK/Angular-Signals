@@ -1,0 +1,29 @@
+/* Select */
+select {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition-base);
+}
+
+select>option {
+  color: var(--text-primary);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(100, 149, 237, 0.25);
+}
+
+.loading {
+  text-align: left;
+  color: var(--text-secondary);
+  font-weight: bold;
+}

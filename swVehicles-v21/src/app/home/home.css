@@ -12,3 +12,16 @@
 	width: auto;
 }
 
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition-base);
+  font-weight: var(--font-weight-bold);
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+  text-shadow: 0 0 5px rgba(184, 134, 11, 0.3);
+}

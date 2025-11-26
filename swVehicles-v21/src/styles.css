@@ -8,33 +8,28 @@
   
   /* Secondary/Accent Colors - Rusty oranges and browns */
   --secondary-color: #cd7f32;      /* Classic bronze */
-  --accent-color: #c87533;         /* Copper accent */
   --rebel-orange: #d2691e;         /* Rusty orange */
   
   /* Status Colors */
-  --success-color: #6b8e23;        /* Olive drab green */
+  --success-color: #77b005;        /* Olive drab green */
   --danger-color: #8b0000;         /* Dark red */
   --warning-color: #ff8c00;        /* Dark orange */
   
   /* Backgrounds - Weathered and industrial */
-  --dark-bg: #1a1612;              /* Deep charcoal brown */
-  --medium-bg: #2d2420;            /* Weathered metal */
   --light-bg: #d4c5b0;             /* Desert sand/weathered beige */
   --card-bg: #f5f1e8;              /* Aged parchment */
-  --card-bg-dark: #3a2f28;         /* Dark bronze panel */
   --white: #faf8f3;                /* Warm white */
   
   /* Text */
   --text-primary: #3C3A36;         /* Deep brown-black */
   --text-secondary: #6b5d52;       /* Muted bronze brown */
-  --text-light: #f5f1e8;           /* Light on dark */
+  --text-light: #d4c5b0;           /* Light on dark */
   
   /* Special Effects */
   --border-color: #b8a68f;         /* Sandy bronze border */
   --border-glow: #7A6051;          /* Bronze glow */
   
   /* Gradients - Weathered metal looks */
-  --gradient-space: linear-gradient(135deg, #1a1612 0%, #2d2420 100%);
   --gradient-card: linear-gradient(to bottom, #f5f1e8, #e8dcc8);
   --gradient-bronze: linear-gradient(135deg, #927361 0%, #7A6051 100%);
   /* #cd7f32 ... #8b6914 First try: #A2806C */
@@ -51,7 +46,7 @@
   --font-size-base: 1.5rem;
   --font-size-sm: 1.125rem;
   --font-size-lg: 1.25rem;
-  --font-size-xl: 1.875rem;
+  --font-size-xl: 1.525rem;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
   
@@ -157,7 +152,7 @@ body > * {
 .card-header {
   background: var(--gradient-bronze);
   color: var(--white);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   padding: var(--spacing-md) var(--spacing-lg);
   border-bottom: 2px solid rgba(139, 105, 20, 0.5);
@@ -196,7 +191,7 @@ body > * {
 .row {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
 }
 
@@ -223,19 +218,6 @@ body > * {
     grid-column: span 1;
   }
 }
-
-/* Offset utilities */
-.offset-md-3 {
-  grid-column-start: 4;
-}
-
-/* Margin & Padding Utilities */
-.mb-2 { margin-bottom: var(--spacing-sm); }
-.mb-3 { margin-bottom: var(--spacing-md); }
-.mt-3 { margin-top: var(--spacing-md); }
-.me-2 { margin-right: var(--spacing-sm); }
-
-.fw-bold { font-weight: var(--font-weight-bold); }
 
 /* Text Alignment */
 .text-center { text-align: center; }
@@ -276,25 +258,6 @@ body > * {
   padding-bottom: calc(var(--spacing-sm) + 1px);
   margin-bottom: 0;
   font-weight: var(--font-weight-normal);
-}
-
-.form-check {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.form-check-input {
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0;
-  cursor: pointer;
-  accent-color: var(--primary-color);
-}
-
-.form-check-label {
-  cursor: pointer;
-  user-select: none;
 }
 
 /* Buttons with Bronze Metallic Effects */
@@ -384,80 +347,6 @@ body > * {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-}
-
-.list-group-item {
-  position: relative;
-  display: block;
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--white);
-  border: 1px solid var(--border-color);
-}
-
-.list-group-item:first-child {
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-}
-
-.list-group-item:last-child {
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-}
-
-.list-group-item + .list-group-item {
-  border-top-width: 0;
-}
-
-/* Select */
-select {
-  display: block;
-  width: 100%;
-  padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-size-base);
-  line-height: 1.5;
-  color: var(--text-primary);
-  background-color: var(--white);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  transition: var(--transition-base);
-}
-
-select:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.2rem rgba(100, 149, 237, 0.25);
-}
-
-/* Table */
-.table {
-  width: 100%;
-  margin-top: var(--spacing-md);
-  border-collapse: collapse;
-}
-
-.table th,
-.table td {
-  padding: var(--spacing-sm);
-  border: 1px solid var(--border-color);
-}
-
-.table th {
-  background-color: var(--light-bg);
-  font-weight: var(--font-weight-bold);
-}
-
-/* Links */
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: var(--transition-base);
-  font-weight: var(--font-weight-bold);
-}
-
-a:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
-  text-shadow: 0 0 5px rgba(184, 134, 11, 0.3);
 }
 
 /* Weathered Metal Animation */

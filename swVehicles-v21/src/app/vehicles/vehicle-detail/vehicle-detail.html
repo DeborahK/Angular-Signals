@@ -5,28 +5,28 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-md-4">Name:</div>
-        <div class="col-md-8">{{vehicle()?.name}}</div>
+        <div class="row-label">Name:</div>
+        <div class="row-value">{{vehicle()?.name}}</div>
       </div>
       <div class="row">
-        <div class="col-md-4">Classification:</div>
-        <div class="col-md-8">{{vehicle()?.vehicle_class}}</div>
+        <div class="row-label">Classification:</div>
+        <div class="row-value">{{vehicle()?.vehicle_class}}</div>
       </div>
       <div class="row">
-        <div class="col-md-4">Price (in credits):</div>
-        <div class="col-md-8">{{vehicle()?.cost_in_credits | number:'1.2-2'}}</div>
+        <div class="row-label">Price (in credits):</div>
+        <div class="row-value">{{vehicle()?.cost_in_credits | number:'1.2-2'}}</div>
       </div>
       <div class="row">
-        <div class="col-md-4">Crew:</div>
-        <div class="col-md-8">{{vehicle()?.crew}}</div>
+        <div class="row-label">Crew:</div>
+        <div class="row-value">{{vehicle()?.crew}}</div>
       </div>
       <div class="row">
-        <div class="col-md-4">Passengers:</div>
-        <div class="col-md-8">{{vehicle()?.passengers}}</div>
+        <div class="row-label">Passengers:</div>
+        <div class="row-value">{{vehicle()?.passengers}}</div>
       </div>
       <div class="row">
-        <div class="col-md-4">Cargo Capacity:</div>
-        <div class="col-md-8">{{vehicle()?.cargo_capacity}}</div>
+        <div class="row-label">Cargo Capacity:</div>
+        <div class="row-value">{{vehicle()?.cargo_capacity}}</div>
       </div>
 
       @if (errorMessage()) {
@@ -35,12 +35,11 @@
         </div>
       } @else if (vehicleFilms()) {
         <div class="row">
-          <div class="col-md-4">Films:</div>
-          <div class="col-md-6">
+          <div class="row-label">Films:</div>
+          <div class="row-value">
             <ul class="list-group">
               @for (film of vehicleFilms(); track film) {
-                <li class="list-group-item"
-                    style="color:cornflowerblue;font-weight: bold;">
+                <li class="list-group-item">
                   {{film.title}}
                 </li>
               }

@@ -6,20 +6,19 @@ import { CartTotal } from '../../cart/cart-total/cart-total';
 @Component({
     selector: 'sw-vehicle-shell',
     template: `
-    <div class='row'>
-      <div class='col-md-6'>
-        <sw-vehicle-list/>
+      <div class='shell'>
+        <div class='list-container'>
+          <sw-vehicle-list/>
+        </div>
+        <div class='detail-container'>
+          <sw-vehicle-detail/>
+        </div>
+        <div class='total-container'>
+          <sw-cart-total/>
+        </div>
       </div>
-    </div>
-    <div class='row'>
-      <div class='col-md-6'>
-        <sw-vehicle-detail/>
-      </div>
-      <div class='col-md-6'>
-        <sw-cart-total/>
-      </div>
-    </div>
-  `,
+    `,
+    styleUrl: './vehicle-shell.css',
     imports: [VehicleList, VehicleDetail, CartTotal]
 })
 export class VehicleShell {

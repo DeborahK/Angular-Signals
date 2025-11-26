@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'sw-vehicle-list',
   imports: [FormsModule],
-  templateUrl: './vehicle-list.html'
+  templateUrl: './vehicle-list.html',
+  styleUrl: './vehicle-list.css'
 })
 export class VehicleList {
   pageTitle = 'Vehicles';

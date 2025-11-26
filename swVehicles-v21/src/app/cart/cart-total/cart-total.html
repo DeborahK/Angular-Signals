@@ -1,52 +1,48 @@
 @if (selectedVehicle()) {
-  <div class="card border-secondary">
+  <div class="card">
     <div class='card-header'>
-      <div class="row">
-        <div class="col-md-12">Cart Total</div>
-      </div>
+        Cart Total
     </div>
     <div class='card-body'>
-      <div class="row mb-2">
-        <div class="col-md-4">Price (credits)</div>
-        <div class="col-md-4 text-end">
-          {{price() | number:'1.2-2'}}
+      <div class="row">
+        <div class="row-label">Price (credits)</div>
+        <div class="row-value">
+          {{price() | number:'1.0-0'}}
         </div>
       </div>
-      <div class="row mb-2">
-        <div class="col-md-4 fw-bold">Quantity</div>
-        <div class="col-md-2">&nbsp;</div>
-        <div class="col-md-2 text-end">
+      <div class="row">
+        <div class="row-label cell-bold">Quantity</div>
+        <div class="row-value">
           <input type="number"
-                style="width: 50px;text-align:right"
+                class="qty-input"
                 [(ngModel)]="quantity">
         </div>
       </div>
 
-      <div class="row mb-2">
-        <div class="col-md-4">Subtotal:</div>
-        <div class="col-md-4 text-end">
-          {{subTotal() | number:'1.2-2'}}
+      <div class="row">
+        <div class="row-label">Subtotal:</div>
+        <div class="row-value">
+          {{subTotal() | number:'1.0-0'}}
         </div>
       </div>
-      <div class="row mb-2">
-        <div class="col-md-4">Delivery:</div>
+      <div class="row">
+        <div class="row-label">Delivery:</div>
         @if (deliveryFee()) {
-        <div class="col-md-4 text-end">{{deliveryFee() | number:'1.2-2'}}</div>
+        <div class="row-value">{{deliveryFee() | number:'1.2-2'}}</div>
         } @else {
-        <div class="col-md-4 text-end"
-            style='color:green; font-weight: bold;'>Free</div>
+        <div class="row-value free">Free</div>
         }
       </div>
-      <div class="row mb-2">
-        <div class="col-md-4">Estimated Tax:</div>
-        <div class="col-md-4 text-end">
-          {{tax() | number:'1.2-2'}}
+      <div class="row">
+        <div class="row-label">Estimated Tax:</div>
+        <div class="row-value">
+          {{tax() | number:'1.0-0'}}
         </div>
       </div>
-      <div class="row mb-2">
-        <div class="col-md-4"><b>Total:</b></div>
-        <div class="col-md-4 text-end" style='color:cornflowerblue; font-weight: bold;'>
-          {{totalPrice() | number:'1.2-2'}}
+      <div class="row">
+        <div class="row-label"><b>Total:</b></div>
+        <div class="row-value total">
+          {{totalPrice() | number:'1.0-0'}}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 
 import { CartService } from '../cart.service';
@@ -8,7 +8,8 @@ import { VehicleService } from '../../vehicles/vehicle.service';
 @Component({
   selector: 'sw-cart-total',
   imports: [DecimalPipe, FormsModule],
-  templateUrl: './cart-total.html'
+  templateUrl: './cart-total.html',
+  styleUrl: './cart-total.css'
 })
 export class CartTotal {
   private cartService = inject(CartService);

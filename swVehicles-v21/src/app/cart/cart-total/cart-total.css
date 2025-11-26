@@ -1,0 +1,46 @@
+/* Cart Total grid and color styles */
+.row {
+	display: grid;
+	grid-template-columns: .7fr 1fr;
+	align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.row-label {
+  padding: 3px;
+  text-align: left;
+  grid-column: 1 / 2;
+}
+
+.row-value {
+  font-weight: bold;
+  padding: 3px;
+  text-align: right;
+  grid-column: 2 / 3;
+}
+
+.cell-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.qty-input {
+	font-size: var(--font-size-base);
+  width: 100px;
+	text-align: right;
+	border: 1px solid var(--base-color);
+	border-radius: 4px;
+	padding: 2px 6px;
+}
+
+.free {
+	color: var(--success-color);
+	font-weight: bold;
+}
+
+.total {
+	font-weight: bold;
+	font-size: larger;
+  color: var(--rebel-orange);
+}
+
