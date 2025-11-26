@@ -1,28 +1,49 @@
-/* Modern Navbar Styles with Star Wars Theme */
+/* Weathered Control Panel Navbar */
 .navbar {
   display: flex;
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  background: linear-gradient(to bottom, 
+    rgba(245, 241, 232, 0.95), 
+    rgba(228, 220, 200, 0.9));
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid var(--border-color);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+  border-bottom: 3px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(26, 22, 18, 0.25), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+/* Add rivets/industrial detail */
+.navbar::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--primary-dark) 0%, 
+    var(--primary-color) 50%, 
+    var(--primary-dark) 100%);
+  opacity: 0.6;
 }
 
 .navbar-brand {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
-  color: var(--hologram-blue);
+  color: var(--primary-dark);
   margin-right: var(--spacing-xl);
   text-decoration: none;
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
-  animation: hologram-flicker 4s infinite;
+  text-shadow: 0 1px 2px rgba(184, 134, 11, 0.3);
   transition: var(--transition-base);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
 .navbar-brand:hover {
-  color: var(--primary-light);
-  text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(184, 134, 11, 0.4);
 }
 
 .navbar-nav {
@@ -42,13 +63,18 @@
 .nav-link {
   display: block;
   padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
   color: var(--text-primary);
   text-decoration: none;
   cursor: pointer;
   border-radius: var(--border-radius);
   transition: var(--transition-glow);
   position: relative;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.5px;
 }
 
 .nav-link::after {
@@ -61,12 +87,16 @@
   background: var(--primary-color);
   transition: var(--transition-base);
   transform: translateX(-50%);
+  box-shadow: 0 0 8px var(--primary-color);
 }
 
 .nav-link:hover {
-  background-color: rgba(59, 130, 246, 0.1);
-  color: var(--primary-color);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(184, 134, 11, 0.15), 
+    rgba(139, 105, 20, 0.1));
+  color: var(--primary-dark);
+  border-color: var(--border-color);
+  box-shadow: 0 2px 4px rgba(26, 22, 18, 0.15);
 }
 
 .nav-link:hover::after {
@@ -74,16 +104,17 @@
 }
 
 .nav-link.active {
-  color: var(--primary-color);
+  color: var(--white);
   font-weight: var(--font-weight-bold);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(30, 64, 175, 0.1));
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+  background: var(--gradient-bronze);
+  border-color: var(--primary-dark);
+  box-shadow: 0 2px 6px rgba(26, 22, 18, 0.3), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link.active::after {
-  width: 80%;
-  background: var(--primary-color);
-  box-shadow: 0 0 8px var(--primary-color);
+  width: 0;
 }
 
 /* Responsive Navbar */

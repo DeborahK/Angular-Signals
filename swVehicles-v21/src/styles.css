@@ -1,42 +1,44 @@
-/* Modern CSS with Star Wars-Inspired Theme */
+/* Modern CSS with Star Wars Galaxy's Edge-Inspired Theme */
 
 :root {
-  /* Primary Colors - Space blue with golden accents */
-  --primary-color: #3b82f6;
-  --primary-dark: #1e40af;
-  --primary-light: #60a5fa;
+  /* Primary Colors - Bronze and weathered metals */
+  --primary-color: #b8860b;        /* Dark goldenrod bronze */
+  --primary-dark: #8b6914;         /* Deep bronze */
+  --primary-light: #daa520;        /* Lighter bronze */
   
-  /* Secondary/Accent Colors */
-  --secondary-color: #f59e0b;
-  --accent-color: #06b6d4;
-  --rebel-orange: #fb923c;
+  /* Secondary/Accent Colors - Rusty oranges and browns */
+  --secondary-color: #cd7f32;      /* Classic bronze */
+  --accent-color: #c87533;         /* Copper accent */
+  --rebel-orange: #d2691e;         /* Rusty orange */
   
   /* Status Colors */
-  --success-color: #22c55e;
-  --danger-color: #ef4444;
-  --warning-color: #f59e0b;
+  --success-color: #6b8e23;        /* Olive drab green */
+  --danger-color: #8b0000;         /* Dark red */
+  --warning-color: #ff8c00;        /* Dark orange */
   
-  /* Backgrounds */
-  --dark-bg: #0f172a;
-  --medium-bg: #1e293b;
-  --light-bg: #e0e7ff;
-  --card-bg: #ffffff;
-  --card-bg-dark: #1e293b;
-  --white: #ffffff;
+  /* Backgrounds - Weathered and industrial */
+  --dark-bg: #1a1612;              /* Deep charcoal brown */
+  --medium-bg: #2d2420;            /* Weathered metal */
+  --light-bg: #d4c5b0;             /* Desert sand/weathered beige */
+  --card-bg: #f5f1e8;              /* Aged parchment */
+  --card-bg-dark: #3a2f28;         /* Dark bronze panel */
+  --white: #faf8f3;                /* Warm white */
   
   /* Text */
-  --text-primary: #0f172a;
-  --text-secondary: #64748b;
-  --text-light: #f1f5f9;
+  --text-primary: #1a1612;         /* Deep brown-black */
+  --text-secondary: #6b5d52;       /* Muted bronze brown */
+  --text-light: #f5f1e8;           /* Light on dark */
   
   /* Special Effects */
-  --border-color: #cbd5e1;
-  --border-glow: #3b82f6;
-  --hologram-blue: #06b6d4;
+  --border-color: #b8a68f;         /* Sandy bronze border */
+  --border-glow: #7A6051;          /* Bronze glow b8860b */
+  --hologram-blue: #4a7c9e;        /* Muted tech blue */
   
-  /* Gradients */
-  --gradient-space: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --gradient-card: linear-gradient(to bottom, #ffffff, #f8fafc);
+  /* Gradients - Weathered metal looks */
+  --gradient-space: linear-gradient(135deg, #1a1612 0%, #2d2420 100%);
+  --gradient-card: linear-gradient(to bottom, #f5f1e8, #e8dcc8);
+  --gradient-bronze: linear-gradient(135deg, #A2806C 0%, #7A6051 100%);
+  /* #cd7f32 ... #8b6914 First try: #A2806C */
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -55,15 +57,16 @@
   --font-weight-bold: 700;
   
   /* Border Radius */
-  --border-radius: 0.375rem;
-  --border-radius-sm: 0.25rem;
-  --border-radius-lg: 0.5rem;
+  --border-radius: 0.25rem;        /* Sharper, more industrial */
+  --border-radius-sm: 0.125rem;
+  --border-radius-lg: 0.375rem;
   
-  /* Shadows */
-  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
-  --shadow-glow-hover: 0 0 25px rgba(59, 130, 246, 0.5);
+  /* Shadows - Grittier, less soft */
+  --shadow-sm: 0 2px 4px rgba(26, 22, 18, 0.2);
+  --shadow-md: 0 4px 12px rgba(26, 22, 18, 0.3);
+  --shadow-glow: 0 0 15px rgba(184, 134, 11, 0.4);
+  --shadow-glow-hover: 0 0 20px rgba(184, 134, 11, 0.6);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.2);
   
   /* Transitions */
   --transition-base: all 0.2s ease-in-out;
@@ -79,13 +82,35 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: var(--font-size-base);
   color: var(--text-primary);
   line-height: 1.5;
-  background: linear-gradient(to bottom, #e0e7ff, #f8fafc);
+  background: linear-gradient(to bottom, #d4c5b0, #c4b5a0);
   background-attachment: fixed;
   min-height: 100vh;
+  position: relative;
+}
+
+/* Add subtle texture overlay for gritty feel */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Container */
@@ -96,42 +121,68 @@ body {
   padding: 0 var(--spacing-md);
 }
 
-.container-fluid {
-  width: 100%;
-  padding: 0 var(--spacing-md);
-}
-
-/* Card Component with Star Wars Tech Panel Style */
+/* Card Component with Weathered Metal Panel Style */
 .card {
   background: var(--gradient-card);
   border: 2px solid var(--border-color);
-  border-left: 4px solid var(--primary-color);
+  border-left: 5px solid var(--primary-color);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), var(--shadow-inset);
   margin: var(--spacing-md);
   overflow: hidden;
   transition: var(--transition-glow);
+  position: relative;
+}
+
+/* Add weathered edge effect */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(139, 105, 20, 0.3) 25%, 
+    rgba(139, 105, 20, 0.5) 50%, 
+    rgba(139, 105, 20, 0.3) 75%, 
+    transparent 100%);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-glow), var(--shadow-md);
   border-left-color: var(--primary-light);
 }
 
 .card-header {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: var(--gradient-bronze);
   color: var(--white);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   padding: var(--spacing-md) var(--spacing-lg);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(139, 105, 20, 0.5);
+  box-shadow: 0 2px 8px rgba(26, 22, 18, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+/* Add subtle metallic sheen */
+.card-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+  pointer-events: none;
 }
 
 .card-body {
   padding: var(--spacing-lg);
-  background-color: var(--white);
+  background-color: var(--card-bg);
 }
 
 .card.border-secondary {
@@ -247,20 +298,23 @@ body {
   user-select: none;
 }
 
-/* Buttons with Glow Effects */
+/* Buttons with Bronze Metallic Effects */
 .btn {
   display: inline-block;
   padding: var(--spacing-sm) var(--spacing-md);
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-bold);
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition-glow);
   user-select: none;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
 }
 
 .btn:disabled {
@@ -270,30 +324,38 @@ body {
 
 .btn-primary {
   color: var(--white);
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+  background: var(--gradient-bronze);
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 10px rgba(184, 134, 11, 0.4), var(--shadow-inset);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary:hover:not(:disabled) {
   background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
   border-color: var(--primary-light);
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(184, 134, 11, 0.6), 0 4px 8px rgba(26, 22, 18, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 0 8px rgba(184, 134, 11, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .btn-outline-secondary {
-  color: var(--secondary-color);
+  color: var(--text-primary);
   background-color: transparent;
   border-color: var(--secondary-color);
+  text-shadow: none;
 }
 
 .btn-outline-secondary:hover:not(:disabled) {
   color: var(--white);
-  background-color: var(--secondary-color);
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
   border-color: var(--secondary-color);
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
-  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(205, 127, 50, 0.5);
+  transform: translateY(-2px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Alerts */
@@ -385,43 +447,36 @@ select:focus {
   font-weight: var(--font-weight-bold);
 }
 
-/* Images */
-.img-responsive {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.center-block {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* Links */
 a {
   color: var(--primary-color);
   text-decoration: none;
   transition: var(--transition-base);
+  font-weight: var(--font-weight-bold);
 }
 
 a:hover {
-  color: var(--primary-light);
+  color: var(--primary-dark);
   text-decoration: underline;
-  text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+  text-shadow: 0 0 5px rgba(184, 134, 11, 0.3);
 }
 
-/* Hologram-style Flicker Animation */
-@keyframes hologram-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.97; }
+/* Weathered Metal Animation */
+@keyframes metallic-shimmer {
+  0%, 100% { 
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
 }
 
-/* Subtle pulse animation for important elements */
+/* Subtle pulse for important elements */
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 10px rgba(184, 134, 11, 0.3);
   }
   50% {
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 15px rgba(184, 134, 11, 0.5);
   }
 }
